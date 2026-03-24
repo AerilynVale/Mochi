@@ -1,10 +1,10 @@
-﻿// SPDX-License-Identifier: GPL-3.0-or-later
+// SPDX-License-Identifier: GPL-3.0-or-later
 
 namespace Mochi.Core.Prompt;
 
 class MochiPrompt
 {
-    public static string GetPrompt()
+    internal static string GetPrompt()
     {
         string path = GetPath() ?? string.Empty;
 
@@ -22,7 +22,7 @@ class MochiPrompt
             return Directory.GetCurrentDirectory();
         } catch (Exception e)
         {
-            Console.WriteLine("Error, unable to get current directory.");
+            Console.WriteLine($"Error, unable to get current directory: {e}");
             return null;
         }
     }

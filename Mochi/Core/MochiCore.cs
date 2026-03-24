@@ -1,5 +1,6 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 
+using Mochi.Core.Commands;
 using Mochi.Core.Prompt;
 
 namespace Mochi.Core;
@@ -21,7 +22,7 @@ class MochiCore
 
 class MochiKernel
 {
-    public async Task<int> RunAsync()
+    internal async Task<int> RunAsync()
     {
         string prompt = MochiPrompt.GetPrompt();
 
@@ -33,12 +34,7 @@ class MochiKernel
             if (string.IsNullOrWhiteSpace(input)) continue;
             if (input == "exit") return 0;
 
-            await ExecuteCommand(input);
+            int result = MochiCommands.ExecuteCommand(input);
         }
-    }
-
-    private async Task ExecuteCommand(string input)
-    {
-        Console.WriteLine($"Running command for {input}.");
     }
 }

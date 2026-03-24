@@ -14,7 +14,7 @@ A modular, microkernel-like shell for Windows, Mac, and Linux with the help of .
 
 ## License
 
-Copyright (C) 2026  Aerilyn Vale and contribuers.
+Copyright (C) 2026  Aerilyn Vale and contributers.
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by

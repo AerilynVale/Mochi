@@ -1,3 +1,5 @@
+// SPDX-License-Identifier: GPL-3.0-or-later
+
 using Mochi.Core.Prompt;
 
 namespace Mochi.Core;
@@ -6,8 +8,8 @@ class MochiCore
 {
     static async Task Main(string[] args)
     {
-        Console.WriteLine("Mochi Shell v0.1.0-alpha.");
-        Console.WriteLine("Copyright (c) 2026 Aerilyn Vale and contributers. GNU General Public License v3.0-or-later.\n");
+        Console.WriteLine("Mochi v0.1.0-alpha.");
+        Console.WriteLine("Copyright (c) 2026 Aerilyn Vale and contributers. GNU GPL-3.0-or-later.\n");
 
         var kernel = new MochiKernel();
 

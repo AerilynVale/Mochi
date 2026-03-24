@@ -6,10 +6,10 @@ class MochiCommands
 {
     internal static int ExecuteCommand(string input)
     {
-        var (command, args) =  ParseCommand(input);
+        (string command, List<string> args) =  ParseCommand(input);
         Console.WriteLine($"{command} -- args:");
 
-        foreach (var arg in args)
+        foreach (string arg in args)
         {
             Console.WriteLine(arg);
         }

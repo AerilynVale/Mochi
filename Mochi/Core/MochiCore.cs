@@ -12,7 +12,7 @@ class MochiCore
         Console.WriteLine("Mochi v0.1.0-alpha.");
         Console.WriteLine("Copyright (c) 2026 Aerilyn Vale and contributers. GNU GPL-3.0-or-later.\n");
 
-        var kernel = new MochiKernel();
+        MochiKernel kernel = new MochiKernel();
 
         int exitCode = await kernel.RunAsync();
 
@@ -29,7 +29,7 @@ class MochiKernel
         while (true)
         {
             Console.Write(prompt);
-            var input = Console.ReadLine();
+            string? input = Console.ReadLine();
 
             if (string.IsNullOrWhiteSpace(input)) continue;
             if (input == "exit") return 0;

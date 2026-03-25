@@ -2,6 +2,7 @@
 
 using Mochi.Core.Commands;
 using Mochi.Core.Prompt;
+using Mochi.Core.Environment;
 
 namespace Mochi.Core;
 
@@ -12,17 +13,15 @@ class MochiCore
         Console.WriteLine("Mochi v0.1.0-alpha.");
         Console.WriteLine("Copyright (c) 2026 Aerilyn Vale and contributers. GNU GPL-3.0-or-later.\n");
 
-        MochiKernel kernel = new MochiKernel();
+        int exitCode = await MochiKernel.RunAsync();
 
-        int exitCode = await kernel.RunAsync();
-
-        Environment.Exit(exitCode);
+        MochiEnvironment.Exit(0);
     }
 }
 
 class MochiKernel
 {
-    internal async Task<int> RunAsync()
+    internal static async Task<int> RunAsync()
     {
         string prompt = MochiPrompt.GetPrompt();
 
@@ -32,9 +31,10 @@ class MochiKernel
             string? input = Console.ReadLine();
 
             if (string.IsNullOrWhiteSpace(input)) continue;
-            if (input == "exit") return 0;
 
             int result = MochiCommands.ExecuteCommand(input);
+
+            Console.WriteLine($"Process exited with exit code {result}");
         }
     }
 }

@@ -1,17 +1,24 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 
+using Mochi.Core.Environment;
+
 namespace Mochi.Core.Commands;
 
 class MochiCommands
 {
+
     internal static int ExecuteCommand(string input)
     {
         (string command, List<string> args) =  ParseCommand(input);
-        Console.WriteLine($"{command} -- args:");
 
-        foreach (string arg in args)
+        if (command == "exit")
         {
-            Console.WriteLine(arg);
+            MochiEnvironment.Exit(0);
+        }
+        else
+        {
+            Console.WriteLine("Command unknown.");
+            return 1;
         }
 
         return 0;
@@ -24,8 +31,8 @@ class MochiCommands
         string command = parts[0];
 
         List<string> args = parts.Length > 1
-            ? parts[1].Split(' ', StringSplitOptions.RemoveEmptyEntries).ToList()
-            : new List<string>();
+            ? [.. parts[1].Split(' ', StringSplitOptions.RemoveEmptyEntries)]
+            : [];
 
         return (command, args);
     }
